@@ -14,7 +14,7 @@
 }
 
 .kanban-header-image {
-  max-height: 46px !important;
+  max-height: 36px !important;
   widows: inherit;
   width: unset;
   vertical-align: middle;
@@ -24,7 +24,7 @@
   height: fit-content  !important;
   min-height: 3.5vh  !important;
   max-height: 3.5vh  !important;
-  background-color: #383838;
+  background-color: transparent;
   text-align: center;
 }
 img.beveled-milestone-title-image {
@@ -32,12 +32,16 @@ img.beveled-milestone-title-image {
   width: 100%;
   padding: 12px 0;
 }
+
 .kanban-tiles-container{
   height: 84.375vh  !important;
   background-color: #565656;
   background-image: url(https://communicator.hyperefficient2.net/assets/display/background.png);
   background-position: center center;
   background-size: cover;
+}
+.kanban-tiles-container-row{
+  margin-top: 24px;
 }
 .kanban-footer-container{
   height: 3.09375vh  !important;

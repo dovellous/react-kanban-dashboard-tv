@@ -1,0 +1,48 @@
+
+
+.job-item{
+  margin: 16px;
+}
+
+.avatar-image{
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+}
+
+.job-number{
+  font-weight: bold;
+  opacity: 0.5;
+}
+.box {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  font-size: 12px;
+}
+
+.fa-icon{
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.j-i-1 {
+  border-left: 4px solid #af1b38;
+}
+
+.j-i-2 {
+  border-left: 4px solid #0a40a8;
+}
+
+.j-i-3 {
+  border-left: 4px solid #01a34c;
+}
+
+.j-i-4 {
+  border-left: 4px solid #b17c1b;
+}

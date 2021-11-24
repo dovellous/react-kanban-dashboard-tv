@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Swiper from 'swiper/swiper-bundle.esm.js';
 import 'swiper/swiper-bundle.css';
+import Card from './Card.js';
+import CardColumnHeaders from './CardColumnHeaders.js';
 import './App.css';
 
 class App extends React.Component {
@@ -47,53 +49,222 @@ class App extends React.Component {
                              className="kanban-header-image"/>
                     </div>
                 </div>
-                <div className="row kanban-button-container">
-                    <div className="col-3 col-md-3  color-1x">
-                        <img src="https://communicator.hyperefficient2.net/assets/display/m1.png"
-                             className="beveled-milestone-title-image" alt=""/>
-                    </div>
-                    <div className="col-3 col-md-3  color-2x">
-                        <img src="https://communicator.hyperefficient2.net/assets/display/m2.png"
-                             className="beveled-milestone-title-image" alt=""/>
-                    </div>
-                    <div className="col-3 col-md-3  color-3x">
-                        <img src="https://communicator.hyperefficient2.net/assets/display/m3.png"
-                             className="beveled-milestone-title-image" alt=""/>
-                    </div>
-                    <div className="col-3 col-md-3  color-4x">
-                        <img src="https://communicator.hyperefficient2.net/assets/display/m4.png"
-                             className="beveled-milestone-title-image" alt=""/>
-                    </div>
-                </div>
+
                 <div className="row kanban-tiles-container">
+
                     <div className="swiper">
                         <div className="swiper-wrapper">
                             <div className="swiper-slide">
+                                <CardColumnHeaders />
                                 <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">COL1</div>
-                                    <div className="col-3 col-md-3 color-2x">COL2</div>
-                                    <div className="col-3 col-md-3 color-3x">COL3</div>
-                                    <div className="col-3 col-md-3 color-4x">COL4</div>
+                                    <div className="col-3 col-md-3 color-1x">
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-2x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-3x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-4x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
                                 </div>
                             </div>
                             <div className="swiper-slide">
+                                <CardColumnHeaders />
                                 <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">COL5</div>
-                                    <div className="col-3 col-md-3 color-2x">COL6</div>
-                                    <div className="col-3 col-md-3 color-3x">COL7</div>
-                                    <div className="col-3 col-md-3 color-4x">COL8</div>
+                                    <div className="col-3 col-md-3 color-1x">
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-2x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-3x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-4x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
                                 </div>
                             </div>
                             <div className="swiper-slide">
+                                <CardColumnHeaders />
                                 <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">COL9</div>
-                                    <div className="col-3 col-md-3 color-2x">COL10</div>
-                                    <div className="col-3 col-md-3 color-3x">COL11</div>
-                                    <div className="col-3 col-md-3 color-4x">COL12</div>
+                                    <div className="col-3 col-md-3 color-1x">
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-2x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-3x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-4x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="swiper-slide">
+                                <CardColumnHeaders />
+                                <div className="row kanban-tiles-container-row">
+                                    <div className="col-3 col-md-3 color-1x">
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                        <Card
+                                            state="not_started"
+                                            image=""
+                                            name="Gracious Mashasha"
+                                            job="Gracious"
+                                            description="Gracious"
+                                            url="Gracious"
+                                            time="Gracious"
+                                        />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-2x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-3x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
+                                    <div className="col-3 col-md-3 color-4x">
+
+                                        <Card />
+                                        <Card />
+                                        <Card />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div className="row  kanban-footer-container">
                     <div className="col-4">&nbsp;</div>
