@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Swiper from 'swiper/swiper-bundle.esm.js';
 import 'swiper/swiper-bundle.css';
-import Card from './Card.js';
-import CardColumnHeaders from './CardColumnHeaders.js';
+import JobItemSwiper from './JobItemSwiper.js';
 import './App.css';
 
 class App extends React.Component {
@@ -13,7 +12,177 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: null,
+            items: [
+                {
+                    col1: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                    ],
+                    col2: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col3: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col4: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+
+                },
+                {
+                    col1: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                    ],
+                    col2: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col3: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col4: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+
+                },
+                {
+                    col1: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        },
+                    ],
+                    col2: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col3: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+                    col4: [
+                        {
+                            state: "{jobItem.state}",
+                            image: "{jobItem.image}",
+                            name: "{jobItem.name}",
+                            job: "{jobItem.job}",
+                            description: "{jobItem.description}",
+                            url: "{jobItem.url}",
+                            time: "{jobItem.time}",
+                        }
+                    ],
+
+                },
+
+            ],
         };
     }
 
@@ -52,218 +221,7 @@ class App extends React.Component {
 
                 <div className="row kanban-tiles-container">
 
-                    <div className="swiper">
-                        <div className="swiper-wrapper">
-                            <div className="swiper-slide">
-                                <CardColumnHeaders />
-                                <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-2x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-3x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-4x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <CardColumnHeaders />
-                                <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-2x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-3x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-4x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <CardColumnHeaders />
-                                <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-2x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-3x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-4x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <CardColumnHeaders />
-                                <div className="row kanban-tiles-container-row">
-                                    <div className="col-3 col-md-3 color-1x">
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                        <Card
-                                            state="not_started"
-                                            image=""
-                                            name="Gracious Mashasha"
-                                            job="Gracious"
-                                            description="Gracious"
-                                            url="Gracious"
-                                            time="Gracious"
-                                        />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-2x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-3x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                    <div className="col-3 col-md-3 color-4x">
-
-                                        <Card />
-                                        <Card />
-                                        <Card />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <JobItemSwiper items={this.state.items} />
 
                 </div>
                 <div className="row  kanban-footer-container">
