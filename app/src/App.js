@@ -6,205 +6,111 @@ import Swiper from 'swiper/swiper-bundle.esm.js';
 import 'swiper/swiper-bundle.css';
 import JobItemSwiper from './JobItemSwiper.js';
 import './App.css';
-
+const axios = require('axios');
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            items: [
-                {
-                    col1: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                    ],
-                    col2: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col3: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col4: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-
-                },
-                {
-                    col1: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                    ],
-                    col2: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col3: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col4: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-
-                },
-                {
-                    col1: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        },
-                    ],
-                    col2: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col3: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-                    col4: [
-                        {
-                            state: "{jobItem.state}",
-                            image: "{jobItem.image}",
-                            name: "{jobItem.name}",
-                            job: "{jobItem.job}",
-                            description: "{jobItem.description}",
-                            url: "{jobItem.url}",
-                            time: "{jobItem.time}",
-                        }
-                    ],
-
-                },
-
-            ],
+            items: [],
         };
     }
 
     componentDidMount() {
 
-        this.renderSwiper();
+        this.refreshReplicationStats();
 
-        setTimeout(() => {
-            this.setState({favoritecolor: "yellow"})
-        }, 1000)
     }
 
     renderSwiper(){
 
-        var swiper = new Swiper('.swiper', {
+        let self = this;
+
+        window.swiper = new Swiper(".swiper", {
+            loop: false,
+            loopFillGroupWithBlank: true,
+            //slidesPerView: 4,
+            //slidesPerGroup: 4,
+            spaceBetween: 1,
+            centeredSlides: false,
+            direction: 'horizontal',
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: true,
+            },
             pagination: {
-                el: '.swiper-pagination',
+                el: ".swiper-pagination",
                 clickable: true,
             },
         });
 
-        console.log(swiper);
+        window.swiper.on('reachEnd', function () {
+
+            setTimeout(function(){
+
+                window.swiper.destroy(true, true);
+
+                self.refreshReplicationStats();
+
+            }, 10000);
+
+        });
+
+        window.swiper.on('afterInit', function () {
+
+            console.log(":: SWIPER INITIALISED ::");
+
+        });
+
+    }
+
+    refreshReplicationStats(){
+
+        let self = this;
+
+        this.setState({ items: [] })
+
+        // Make a request for a user with a given ID
+        axios.get('http://34.122.0.185/fm/')
+            .then(function (response) {
+                // handle success
+                self.populateData(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+
+    }
+
+    normaliseData( data ){
+
+        console.warn(":: REAL DATA ::", data.data.data);
+
+        return data.data;
+
+    }
+
+    populateData( data ){
+
+        let self = this;
+
+        data = this.normaliseData( data );
+
+        console.log(":: POPULATE DATA ::", data);
+
+        setTimeout(function(){
+
+            self.setState({ items: self.normaliseData( data ) })
+
+            console.log(":: POPULATE DATA :: this.state.items ::", self.state.items);
+
+            self.renderSwiper();
+
+        },1000);
 
     }
 

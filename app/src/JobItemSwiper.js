@@ -3,6 +3,7 @@ import './Card.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Card from './Card.js';
 import SkeletonCard from './SkeletonCard.js';
+import LoaderIndicator from './LoaderIndicator.js';
 import CardColumnHeaders from './CardColumnHeaders.js';
 
 class JobItemSwiper extends React.Component {
@@ -10,7 +11,7 @@ class JobItemSwiper extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
+            items: []
         };
 
     }
@@ -30,7 +31,7 @@ class JobItemSwiper extends React.Component {
             <div className="swiper">
                 <div className="swiper-wrapper">
 
-                    {this.props.items.length < 0 ?
+                    {this.props.items.length > 0 ?
 
                             this.props.items.map(slide => (
 
@@ -149,6 +150,12 @@ class JobItemSwiper extends React.Component {
                     }
 
                 </div>
+
+                {this.props.items.length < 0 &&
+
+                    <LoaderIndicator value="1"/>
+
+                }
 
             </div>
 
