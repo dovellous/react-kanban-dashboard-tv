@@ -34,7 +34,7 @@ img.beveled-milestone-title-image {
 }
 
 .kanban-tiles-container{
-  height: 84.375vh  !important;
+  height: 88vh  !important; /*** 84.375vh  !important; ***/
   background-color: #565656;
   background-image: url(https://communicator.hyperefficient2.net/assets/display/background.png);
   background-position: center center;
@@ -63,4 +63,14 @@ img.beveled-milestone-title-image {
 }
 .color-4{
   background-color: #3bb220;
+}
+
+.swiper-slide {
+  padding: 0 20px;
+}
+
+.list-group.list-group-flush > svg{
+  width: 80%;
+  height: fit-content;
+  margin: 8px auto;
 }
