@@ -71,7 +71,7 @@ class App extends React.Component {
         this.setState({ items: [] })
 
         // Make a request for a user with a given ID
-        axios.get('http://34.122.0.185/fm/')
+        axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/13/')
             .then(function (response) {
                 // handle success
                 self.populateData(response);
@@ -88,9 +88,9 @@ class App extends React.Component {
 
     normaliseData( data ){
 
-        console.warn(":: REAL DATA ::", data.data.data);
+        //console.warn(":: REAL DATA :: XXX ::", data.data.pages);
 
-        return data.data;
+        return data.data.pages;
 
     }
 
@@ -100,11 +100,9 @@ class App extends React.Component {
 
         data = this.normaliseData( data );
 
-        console.log(":: POPULATE DATA ::", data);
-
         setTimeout(function(){
 
-            self.setState({ items: self.normaliseData( data ) })
+            self.setState({ items: data })
 
             console.log(":: POPULATE DATA :: this.state.items ::", self.state.items);
 

@@ -6,8 +6,8 @@
 
 .avatar-image{
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   margin-right: 12px;
 }
 
@@ -15,7 +15,12 @@
   font-weight: bold;
   opacity: 0.5;
 }
-.box {
+
+.jobIdentity, .jobSummary, .jobFooter{
+  padding: 3px 0px
+}
+
+.jobFooter {
   display: flex;
   flex-wrap: nowrap;
   align-content: stretch;
@@ -33,6 +38,8 @@
 
 .j-i-0 {
   border-left: 4px solid #cccccc;
+  height: fit-content;
+  max-height: 25vh;
 }
 
 .j-i-1 {
@@ -49,4 +56,20 @@
 
 .j-i-4 {
   border-left: 4px solid #b17c1b;
+}
+
+.xblinker {
+  display: inline-block;
+  position: absolute !important;
+  top: 5px !important;
+  right: 10px !important;
+  float: right;
+}
+
+.truncate {
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

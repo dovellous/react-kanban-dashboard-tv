@@ -7,43 +7,80 @@ class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: null,
+            state:null,
+            fullname:'null',
+            job:'null',
+            description:'null',
+            url:'null',
+            time:'null',
+            escalate:false,
         };
     }
 
     componentDidMount() {
-
-        setTimeout(() => {
-            this.setState({favoritecolor: "yellow"})
-        }, 1000);
 
     }
 
     render() {
 
         return (
-            <div className="card job-item j-i-1">
+            <div className={'card job-item '+this.props.state}>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
 
                         <div className="identity">
                             <span className="avatar">
-                                <img className="avatar-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAABrUlEQVRYhe2Vv66CMBSHfR99DXyMvoQ+A2yuOrhCwmxcYZQNWG5C4lAX0sSBgaGDw+9Opym14C0m95rcNjlLaU8/ztc/i9Vyh0+MxV8DeDAP5sE8mAf7NDDGUmTZFZx3KrLsiu3mbB1PY4rLbTKvntMJbB0cUVxuoCZED847CNGrvqa5Yx0cB/P0Zn7TQ8qHGucE1jR3tThj6RN0XbUA8FQZvSVxac192BcAgK6TbmBJXCqoKR22xADAeQcpH6Pz66pVBpzASJdZKdv+M/sIjCo6pvF0+nIHoz316mCMzeW8U7oO+8KqkbHUDSwK8x9pfAVGlamr1qpxtdzNA7Md9yQuB9cGhX516GB11ULKh1WjM9h2cx4knwKjzR+FuRXM1KlrdAajvzL/1BZZdp0EM3XqGmeB0Ykau4dcwHSdusZZYIylqmpjT886OKrEU2Ckj14R/YpxBqO9Rs9GXbVI4hJRmOOwL1BcbuqbEP1gMdv+1Mfq/bPAqHKkwmxC9FbVNjB63nSNb4GZFYzCHFGYTz7OUZg/6Wcstc6jnG+B/XZ4MA/mwT4tPJgH+7dg31C1FJmlrXUEAAAAAElFTkSuQmCC"
-                                     alt="Gracious Mashasha"/>
+                                <img
+                                    className="avatar-image"
+                                    src={'https://ui-avatars.com/api/?format=svg&background=000099&color=ffffff&bold=true&rounded=true&font-size=0.4&size=30&name='+this.props.fullname}
+                                    alt={this.props.fullname}
+                                />
                             </span>
                             <span className="fullname">
-                                Gracious Mashasha
+                                {this.props.fullname}
                             </span>
+                        </div>
+
+                        {(this.props.escalate === true || this.props.escalate === 'true')  &&
+
+                        <div id="b464" className="xblinker">
+                            <svg width="18" height="18">
+                                <rect
+                                    width="18" height="18"
+                                    style={
+                                        {
+                                            'fill': 'rgb(255,0,0)',
+                                            'stroke-width': '1',
+                                            'stroke': 'rgb(255,0,0)',
+                                            'box-shadow': '0px 0px 16px #ff0000',
+                                            'border': '2px solid #ffffff'
+                                        }
+                                    }>
+                                    <animate
+                                        attributeType="XML"
+                                        attributeName="fill"
+                                        values="#fff;#f00;#fff;#fff"
+                                        dur="0.8s"
+                                        repeatCount="indefinite"/>
+                                </rect>
+                            </svg>
+                        </div>
+
+                        }
+
+                    </li>
+                    <li className="list-group-item">
+
+                        <div className="jobSummary">
+                            <span className="job-number">Job: #{this.props.job}</span>
+                            <br/>
+                            <span className="truncate">{this.props.description}</span>
                         </div>
 
                     </li>
                     <li className="list-group-item">
-                        <span className="job-number">Job #00012</span>
-                        <br/>
-                        <span> Electrical Installation </span>
-                    </li>
-                    <li className="list-group-item">
-                        <div className="box">
+
+                        <div className="jobFooter">
                             <div>
                                 <i className="fa fa-eye fa-icon"></i>
                                 View
@@ -53,6 +90,7 @@ class Card extends React.Component {
                                 4 Months Ago
                             </div>
                         </div>
+
                     </li>
                 </ul>
             </div>

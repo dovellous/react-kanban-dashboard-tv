@@ -14,7 +14,7 @@
 }
 
 .kanban-header-image {
-  max-height: 36px !important;
+  max-height: 32px !important;
   widows: inherit;
   width: unset;
   vertical-align: middle;
@@ -73,4 +73,12 @@ img.beveled-milestone-title-image {
   width: 80%;
   height: fit-content;
   margin: 8px auto;
+}
+
+.col-md-3 {
+  border-right: 2px dotted #787a7c;
+}
+
+.col-md-3:last-of-type {
+  border-right: none;
 }

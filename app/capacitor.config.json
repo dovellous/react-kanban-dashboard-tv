@@ -1,0 +1,6 @@
+{
+  "appId": "ai.inboxgroup.communicator.tv",
+  "appName": "Supplyzone Communicator",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

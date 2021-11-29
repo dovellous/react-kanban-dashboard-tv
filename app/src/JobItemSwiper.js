@@ -41,16 +41,17 @@ class JobItemSwiper extends React.Component {
 
                                         <div className="col-3 col-md-3">
 
-                                            {slide.col1.map(jobItem => (
+                                            {Object.values(slide.NOT_STARTED).map(jobItem => (
 
                                                 <Card
-                                                    state={jobItem.state}
-                                                    image={jobItem.image}
-                                                    name={jobItem.name}
-                                                    job={jobItem.job}
+                                                    object={jobItem}
+                                                    state='j-i-1'
+                                                    fullname={jobItem.customer_name}
+                                                    job={jobItem.job_number}
                                                     description={jobItem.description}
-                                                    url={jobItem.url}
-                                                    time={jobItem.time}
+                                                    url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
+                                                    time={jobItem.time_ago}
+                                                    escalate={jobItem.is_escalate === 1}
                                                 />
 
                                             ))}
@@ -59,16 +60,17 @@ class JobItemSwiper extends React.Component {
 
                                         <div className="col-3 col-md-3">
 
-                                            {slide.col2.map(jobItem => (
+                                            {Object.values(slide.IN_PROGRESS).map(jobItem => (
 
                                                 <Card
-                                                    state={jobItem.state}
-                                                    image={jobItem.image}
-                                                    name={jobItem.name}
-                                                    job={jobItem.job}
+                                                    object={jobItem}
+                                                    state='j-i-2'
+                                                    fullname={jobItem.customer_name}
+                                                    job={jobItem.job_number}
                                                     description={jobItem.description}
-                                                    url={jobItem.url}
-                                                    time={jobItem.time}
+                                                    url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
+                                                    time={jobItem.time_ago}
+                                                    escalate={jobItem.is_escalate === 1}
                                                 />
 
                                             ))}
@@ -77,16 +79,17 @@ class JobItemSwiper extends React.Component {
 
                                         <div className="col-3 col-md-3">
 
-                                            {slide.col3.map(jobItem => (
+                                            {Object.values(slide.COMPLETED).map(jobItem => (
 
                                                 <Card
-                                                    state={jobItem.state}
-                                                    image={jobItem.image}
-                                                    name={jobItem.name}
-                                                    job={jobItem.job}
+                                                    object={jobItem}
+                                                    state='j-i-3'
+                                                    fullname={jobItem.customer_name}
+                                                    job={jobItem.job_number}
                                                     description={jobItem.description}
-                                                    url={jobItem.url}
-                                                    time={jobItem.time}
+                                                    url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
+                                                    time={jobItem.time_ago}
+                                                    escalate={jobItem.is_escalate === 1}
                                                 />
 
                                             ))}
@@ -95,16 +98,17 @@ class JobItemSwiper extends React.Component {
 
                                         <div className="col-3 col-md-3">
 
-                                            {slide.col4.map(jobItem => (
+                                            {Object.values(slide.DELIVERED).map(jobItem => (
 
                                                 <Card
-                                                    state={jobItem.state}
-                                                    image={jobItem.image}
-                                                    name={jobItem.name}
-                                                    job={jobItem.job}
+                                                    object={jobItem}
+                                                    state='j-i-4'
+                                                    fullname={jobItem.customer_name}
+                                                    job={jobItem.job_number}
                                                     description={jobItem.description}
-                                                    url={jobItem.url}
-                                                    time={jobItem.time}
+                                                    url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
+                                                    time={jobItem.time_ago}
+                                                    escalate={jobItem.is_escalate === 1}
                                                 />
 
                                             ))}
@@ -131,7 +135,7 @@ class JobItemSwiper extends React.Component {
 
                                             {[1, 2, 3].map(skeletonCard => (
                                                 <div className="card job-item j-i-0">
-                                                    <ul className="list-group list-group-flush">
+                                                    <ul className="list-group list-group-flush  list-group-skeleton">
                                                          <SkeletonCard/>
                                                     </ul>
                                                 </div>
