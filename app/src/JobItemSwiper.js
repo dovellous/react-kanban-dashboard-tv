@@ -11,7 +11,13 @@ class JobItemSwiper extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            titles: {
+                t1: "Not Started",
+                t2: "In Progress",
+                t3: "Completed",
+                t4: "Delivered",
+            }
         };
 
     }
@@ -29,6 +35,7 @@ class JobItemSwiper extends React.Component {
         return (
 
             <div className="swiper">
+
                 <div className="swiper-wrapper">
 
                     {this.props.items.length > 0 ?
@@ -36,7 +43,7 @@ class JobItemSwiper extends React.Component {
                             this.props.items.map(slide => (
 
                                 <div className="swiper-slide">
-                                    <CardColumnHeaders/>
+                                    <CardColumnHeaders titles={this.state.titles}  />
                                     <div className="row kanban-tiles-container-row">
 
                                         <div className="col-3 col-md-3">
@@ -51,7 +58,7 @@ class JobItemSwiper extends React.Component {
                                                     description={jobItem.description}
                                                     url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
                                                     time={jobItem.time_ago}
-                                                    escalate={jobItem.is_escalate === 1}
+                                                    escalate={jobItem.is_escalate === '1' || jobItem.is_escalate === 1 || jobItem.is_escalate === true || jobItem.is_escalate === 'true'}
                                                 />
 
                                             ))}
@@ -70,7 +77,7 @@ class JobItemSwiper extends React.Component {
                                                     description={jobItem.description}
                                                     url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
                                                     time={jobItem.time_ago}
-                                                    escalate={jobItem.is_escalate === 1}
+                                                    escalate={jobItem.is_escalate === '1' || jobItem.is_escalate === 1 || jobItem.is_escalate === true || jobItem.is_escalate === 'true'}
                                                 />
 
                                             ))}
@@ -89,7 +96,7 @@ class JobItemSwiper extends React.Component {
                                                     description={jobItem.description}
                                                     url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
                                                     time={jobItem.time_ago}
-                                                    escalate={jobItem.is_escalate === 1}
+                                                    escalate={jobItem.is_escalate === '1' || jobItem.is_escalate === 1 || jobItem.is_escalate === true || jobItem.is_escalate === 'true'}
                                                 />
 
                                             ))}
@@ -108,7 +115,7 @@ class JobItemSwiper extends React.Component {
                                                     description={jobItem.description}
                                                     url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
                                                     time={jobItem.time_ago}
-                                                    escalate={jobItem.is_escalate === 1}
+                                                    escalate={jobItem.is_escalate === '1' || jobItem.is_escalate === 1 || jobItem.is_escalate === true || jobItem.is_escalate === 'true'}
                                                 />
 
                                             ))}
@@ -155,7 +162,7 @@ class JobItemSwiper extends React.Component {
 
                 </div>
 
-                {this.props.items.length < 0 &&
+                {this.props.items.length < 1 &&
 
                     <LoaderIndicator value="1"/>
 

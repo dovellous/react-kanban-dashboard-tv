@@ -24,6 +24,7 @@ class Card extends React.Component {
     render() {
 
         return (
+
             <div className={'card job-item '+this.props.state}>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
@@ -41,18 +42,20 @@ class Card extends React.Component {
                             </span>
                         </div>
 
-                        {(this.props.escalate === true || this.props.escalate === 'true')  &&
+                        {(this.props.escalate === true || this.props.escalate === 'true' || this.props.escalate === 1 || this.props.escalate === '1')  &&
 
                         <div id="b464" className="xblinker">
+
+
+
                             <svg width="18" height="18">
                                 <rect
                                     width="18" height="18"
                                     style={
                                         {
                                             'fill': 'rgb(255,0,0)',
-                                            'stroke-width': '1',
-                                            'stroke': 'rgb(255,0,0)',
-                                            'box-shadow': '0px 0px 16px #ff0000',
+                                            'strokeWidth': '1',
+                                            'stroke': 'rgb(255,255,255)',
                                             'border': '2px solid #ffffff'
                                         }
                                     }>
@@ -60,7 +63,7 @@ class Card extends React.Component {
                                         attributeType="XML"
                                         attributeName="fill"
                                         values="#fff;#f00;#fff;#fff"
-                                        dur="0.8s"
+                                        dur="1.3s"
                                         repeatCount="indefinite"/>
                                 </rect>
                             </svg>

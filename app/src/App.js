@@ -2,140 +2,79 @@ import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Swiper from 'swiper/swiper-bundle.esm.js';
-import 'swiper/swiper-bundle.css';
-import JobItemSwiper from './JobItemSwiper.js';
+import LoginForm from './LoginForm.js';
+import Dashboard from './Dashboard.js';
 import './App.css';
-const axios = require('axios');
+import {reactLocalStorage} from 'reactjs-localstorage';
+
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
+            loggedIn: false,
+            userData: null
         };
+
+        // Bind the this context to the handler function
+        this.handlerLogin = this.handlerLogin.bind(this);
+        this.handlerLogout = this.handlerLogout.bind(this);
+
     }
 
     componentDidMount() {
 
-        this.refreshReplicationStats();
+    }
+
+    // This method will be sent to the child component
+    handlerLogin( data ) {
+
+        this.setState({
+            loggedIn: true,
+            userData: data
+        });
+
+        console.warn("HANDLE LOGIN", this.state);
 
     }
 
-    renderSwiper(){
+    // This method will be sent to the child component
+    handlerLogout( ) {
 
-        let self = this;
+        const self = this;
 
-        window.swiper = new Swiper(".swiper", {
-            loop: false,
-            loopFillGroupWithBlank: true,
-            //slidesPerView: 4,
-            //slidesPerGroup: 4,
-            spaceBetween: 1,
-            centeredSlides: false,
-            direction: 'horizontal',
-            autoplay: {
-                delay: 10000,
-                disableOnInteraction: true,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
+        if (window.confirm("Do you really want to logout?")) {
 
-        window.swiper.on('reachEnd', function () {
+
+            reactLocalStorage.remove("rememberMe");
+
+            reactLocalStorage.remove('loginCredentials');
+
+            reactLocalStorage.remove('userObject');
 
             setTimeout(function(){
 
-                window.swiper.destroy(true, true);
+                self.setState({
+                    loggedIn: false,
+                    userData: null
+                });
 
-                self.refreshReplicationStats();
+                console.warn("HANDLE LOGOUT", this.state);
 
-            }, 10000);
 
-        });
+            },1000)
 
-        window.swiper.on('afterInit', function () {
+        }
 
-            console.log(":: SWIPER INITIALISED ::");
-
-        });
-
-    }
-
-    refreshReplicationStats(){
-
-        let self = this;
-
-        this.setState({ items: [] })
-
-        // Make a request for a user with a given ID
-        axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/13/')
-            .then(function (response) {
-                // handle success
-                self.populateData(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function () {
-                // always executed
-            });
-
-    }
-
-    normaliseData( data ){
-
-        //console.warn(":: REAL DATA :: XXX ::", data.data.pages);
-
-        return data.data.pages;
-
-    }
-
-    populateData( data ){
-
-        let self = this;
-
-        data = this.normaliseData( data );
-
-        setTimeout(function(){
-
-            self.setState({ items: data })
-
-            console.log(":: POPULATE DATA :: this.state.items ::", self.state.items);
-
-            self.renderSwiper();
-
-        },1000);
 
     }
 
     render() {
 
         return (
-            <div className="container-fluid ">
-                <div className="row kanban-header-container">
-                    <div className="col-12 col-md-12 kanban-header">
-                        <img alt="" src="https://communicator.hyperefficient2.net/assets/display/title.png"
-                             className="kanban-header-image"/>
-                    </div>
-                </div>
 
-                <div className="row kanban-tiles-container">
+            !this.state.loggedIn ? <LoginForm action={this.handlerLogin} /> : <Dashboard actionLogout={this.handlerLogout} userData={this.state.userData} />
 
-                    <JobItemSwiper items={this.state.items} />
-
-                </div>
-                <div className="row  kanban-footer-container">
-                    <div className="col-4">&nbsp;</div>
-                    <div className="col-4  kanban-footer-text-container">
-                        <div className="swiper-pagination"></div>
-                    </div>
-                    <div className="col-4">&nbsp;</div>
-                </div>
-            </div>
         );
 
     }
