@@ -19,33 +19,21 @@ class Dashboard extends React.Component {
             items: [],
             titles: {
                 t1: "Not Started",
-                t2: "In Progress",
+                t2: "In Progress...",
                 t3: "Completed",
                 t4: "Delivered",
             }
         };
+
     }
 
     componentDidMount() {
 
-        let self = this;
+        this.setState({
+            userData: this.props.userData
+        })
 
         this.refreshReplicationStats();
-
-        setTimeout(function () {
-
-            console.log("::: TENANT STATE :::", self.state)
-
-            self.setState({
-                titles: {
-                    t1: self.state.userData.tenant.not_started_title,
-                    t2: self.state.userData.tenant.in_progress_title,
-                    t3: self.state.userData.tenant.completed_title,
-                    t4: self.state.userData.tenant.delivered_title,
-                }
-            })
-
-        },1000);
 
     }
 
@@ -129,15 +117,28 @@ class Dashboard extends React.Component {
 
         setTimeout(function(){
 
-            console.log(":: POPULATE DATA :: this.state.items :: 1 ::", data);
-
             self.setState({ items: data })
 
-            console.log(":: POPULATE DATA :: this.state.items :: 2 ::", self.state.items);
+            //console.log(":: POPULATE DATA :: this.state.items :: 2 ::", self.state.items);
 
             self.renderSwiper();
 
         },1000);
+
+        setTimeout(function () {
+
+            const newTitles = {
+                t1: self.state.userData.tenant.not_started_title,
+                t2: self.state.userData.tenant.in_progress_title,
+                t3: self.state.userData.tenant.completed_title,
+                t4: self.state.userData.tenant.delivered_title,
+            };
+
+            self.setState({
+                titles: newTitles
+            })
+
+        },2000);
 
     }
 

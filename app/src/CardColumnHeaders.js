@@ -8,21 +8,40 @@ class CardColumnHeaders extends React.Component {
         super(props);
         this.state = {
             titles: {
-                t1: "Not Started",
-                t2: "In Progress",
-                t3: "Completed",
-                t4: "Delivered",
+                t1: "Not Started.",
+                t2: "In Progress.",
+                t3: "Completed.",
+                t4: "Delivered.",
             }
         };
     }
 
     componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
 
-        setTimeout(() => {
-            this.setState({favoritecolor: "yellow"})
-        }, 1000);
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+
+    tick() {
+
+        //console.warn(":::: >>>>>> TICK 2 <<<<<< ::::", this.props.titles, this.state);
+
+        if (typeof this.props.titles !== "undefined") {
+
+            this.setState({
+                titles: this.props.titles
+            });
+
+        }
 
     }
+
 
     render() {
 

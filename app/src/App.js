@@ -34,7 +34,7 @@ class App extends React.Component {
             userData: data
         });
 
-        console.warn("HANDLE LOGIN", this.state);
+        //console.warn("HANDLE LOGIN", this.state);
 
     }
 

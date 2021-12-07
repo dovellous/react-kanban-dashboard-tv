@@ -23,10 +23,23 @@ class JobItemSwiper extends React.Component {
     }
 
     componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            3000
+        );
+    }
 
-        setTimeout(() => {
-            this.setState({favoritecolor: "yellow"})
-        }, 1000);
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+
+        this.setState({
+            titles: this.props.titles
+        });
+
+        //console.log("::: TICK FTER 3 SEC :XXXXXX::", this.props.titles)
 
     }
 

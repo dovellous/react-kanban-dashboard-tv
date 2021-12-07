@@ -64,7 +64,7 @@ class LoginForm extends React.Component {
                 }
             );
 
-            console.warn("LOCAL_REMEMBER_ME", localRememberMe, this.state);
+            //console.warn("LOCAL_REMEMBER_ME", localRememberMe, this.state);
 
         },10);
 
@@ -127,7 +127,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log('A form was submitted: ', this.state);
+        //console.log('A form was submitted: ', this.state);
         this.loginAction( this.state );
         event.preventDefault();
     }
@@ -158,7 +158,7 @@ class LoginForm extends React.Component {
             })
             .then(function () {
                 // always executed
-                console.log(1234567890);
+                //console.log(1234567890);
             });
 
     }
@@ -181,7 +181,7 @@ class LoginForm extends React.Component {
 
                     if (self.state.rememberMe){
 
-                        console.warn(":: self.state.rememberMe ::", self.state.rememberMe);
+                        //console.warn(":: self.state.rememberMe ::", self.state.rememberMe);
 
                         reactLocalStorage.setObject("userObject", data.payload);
 
@@ -207,7 +207,7 @@ class LoginForm extends React.Component {
 
     signInUser( payload ){
 
-        console.log("SIGNED IN USER", payload);
+        //console.log("SIGNED IN USER", payload);
 
         if ("tenant_id" in payload){
 
@@ -215,13 +215,13 @@ class LoginForm extends React.Component {
 
         }
 
-        console.log("SIGNED IN ID", payload.tenant_id);
+        //console.log("SIGNED IN ID", payload.tenant_id);
 
         if ("tenant" in payload){
 
             const tenant = payload.tenant;
 
-            console.log("SIGNED IN TENANT", tenant);
+            //console.log("SIGNED IN TENANT", tenant);
 
             if ("settings" in tenant){
 
@@ -233,7 +233,7 @@ class LoginForm extends React.Component {
 
                     reactLocalStorage.setObject("tenantSettings", tenantSettings);
 
-                    console.warn("tenantSettings::", tenantSettings);
+                    //console.warn("tenantSettings::", tenantSettings);
 
                 }
 
