@@ -1,1 +1,6 @@
-[]
+[
+	{
+		"pkg": "semi-kiosk",
+		"classpath": "org.collegeboard.esat.SemiKiosk"
+	}
+]

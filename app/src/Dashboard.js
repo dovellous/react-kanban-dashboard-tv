@@ -3,6 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Swiper from 'swiper/swiper-bundle.esm.js';
 import 'swiper/swiper-bundle.css';
 import JobItemSwiper from './JobItemSwiper.js';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const axios = require('axios');
 
@@ -49,8 +50,9 @@ class Dashboard extends React.Component {
             spaceBetween: 1,
             centeredSlides: false,
             direction: 'horizontal',
+            speed: 5000,
             autoplay: {
-                delay: 10000,
+                delay: 15000,
                 disableOnInteraction: true,
             },
             pagination: {
@@ -81,23 +83,69 @@ class Dashboard extends React.Component {
 
     refreshReplicationStats(){
 
+        console.log(":: refreshReplicationStats ::: self.props ::::", this.props);
+
         let self = this;
 
-        this.setState({ items: [] })
+        if ("tenant_id" in self.props.userData) {
 
-        // Make a request for a user with a given ID
-        axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/'+self.props.userData.tenant_id)
-            .then(function (response) {
-                // handle success
-                self.populateData(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function () {
-                // always executed
-            });
+            this.setState({items: []})
+
+            // Make a request for a user with a given ID
+            axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/' + self.props.userData.tenant_id)
+                .then(function (response) {
+                    // handle success
+                    self.populateData(response);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log("::", error);
+
+                    setTimeout(function () {
+
+                        self.refreshReplicationStats();
+
+                    },1000);
+
+                })
+                .then(function () {
+                    // always executed
+                });
+
+        } else {
+
+            console.warn(":: No data 0 ::")
+
+            let localUserObject = reactLocalStorage.getObject("userObject");
+
+            console.warn(":: No data 1 :: load local ::", localUserObject);
+
+            if (localUserObject){
+
+                console.warn(":: No data 2 :: now get the data ::", localUserObject);
+
+                // Make a request for a user with a given ID
+                axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/' + localUserObject.tenant_id)
+                    .then(function (response) {
+
+                        console.warn(":: No data 3 :: result from server ::", response);
+
+                        // handle success
+                        self.populateData(response);
+
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+                    .then(function () {
+                        // always executed
+                    });
+
+            }
+
+
+        }
 
     }
 
@@ -113,13 +161,17 @@ class Dashboard extends React.Component {
 
         let self = this;
 
+        console.log(":: POPULATE DATA :: data :: 0 ::", data);
+
         data = this.normaliseData( data );
+
+        console.log(":: POPULATE DATA :: data :: 2 ::", data);
 
         setTimeout(function(){
 
-            self.setState({ items: data })
+            self.setState({ items: data });
 
-            //console.log(":: POPULATE DATA :: this.state.items :: 2 ::", self.state.items);
+            console.log(":: POPULATE DATA :: this.state.items :: 3 ::", self.state.items);
 
             self.renderSwiper();
 

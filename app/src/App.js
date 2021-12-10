@@ -7,6 +7,9 @@ import Dashboard from './Dashboard.js';
 import './App.css';
 import {reactLocalStorage} from 'reactjs-localstorage';
 
+//import KioskMode from 'cordova-plugin-kiosk-mode/www/kiosk-mode.js'
+//import {AutoStart} from 'cordova-plugin-autostart/www/auto-start'
+
 class App extends React.Component {
 
     constructor(props) {
@@ -20,9 +23,37 @@ class App extends React.Component {
         this.handlerLogin = this.handlerLogin.bind(this);
         this.handlerLogout = this.handlerLogout.bind(this);
 
+        //Autostart.enable();
+        //KioskMode.enable();
+
     }
 
     componentDidMount() {
+
+        let self = this;
+
+        let localUserObject = reactLocalStorage.getObject("userObject");
+
+        if (localUserObject && "tenant_id" in localUserObject ){
+
+            this.handlerLogin(localUserObject);
+
+            setTimeout(function () {
+
+                if (!self.state.loggedIn){
+
+                    window.location.reload();
+
+                    this.setState({
+                        loggedIn: true,
+                        userData: localUserObject
+                    });
+
+                }
+
+            },10000);
+
+        }
 
     }
 

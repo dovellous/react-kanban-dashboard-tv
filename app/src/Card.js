@@ -46,27 +46,8 @@ class Card extends React.Component {
 
                         <div id="b464" className="xblinker">
 
+                            <i className="fa fa-exclamation-triangle fa-blinkx" aria-hidden="true" style={{color: "red", fontSize: "18px"}}></i>
 
-
-                            <svg width="18" height="18">
-                                <rect
-                                    width="18" height="18"
-                                    style={
-                                        {
-                                            'fill': 'rgb(255,0,0)',
-                                            'strokeWidth': '1',
-                                            'stroke': 'rgb(255,255,255)',
-                                            'border': '2px solid #ffffff'
-                                        }
-                                    }>
-                                    <animate
-                                        attributeType="XML"
-                                        attributeName="fill"
-                                        values="#fff;#f00;#fff;#fff"
-                                        dur="1.3s"
-                                        repeatCount="indefinite"/>
-                                </rect>
-                            </svg>
                         </div>
 
                         }
@@ -84,10 +65,12 @@ class Card extends React.Component {
                     <li className="list-group-item">
 
                         <div className="jobFooter">
-                            <div>
-                                <i className="fa fa-eye fa-icon"></i>
-                                View
+
+                            <div className="">
+                                <i className="fa fa-eye fa-icon d-none"></i>
+
                             </div>
+
                             <div>
                                 <i className="fa fa-calendar fa-icon"></i>
                                 4 Months Ago

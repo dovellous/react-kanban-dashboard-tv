@@ -13,7 +13,7 @@ class LoaderIndicator extends React.Component {
     render() {
 
         return (
-            <div id="overlay" style={{opacity: 0.3}} >
+            <div id="overlay" style={{opacity: 0}} >
                 <div className="spinner"></div>
                 <br />
                     Loading...
