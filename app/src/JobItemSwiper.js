@@ -128,6 +128,7 @@ class JobItemSwiper extends React.Component {
                                                     description={jobItem.description}
                                                     url={jobItem.id+'/'+jobItem.tenant_id+'/'+jobItem.customer_id+'/'+jobItem.job_number}
                                                     time={jobItem.time_ago}
+                                                    date={jobItem.date_updated}
                                                     escalate={jobItem.is_escalate === '1' || jobItem.is_escalate === 1 || jobItem.is_escalate === true || jobItem.is_escalate === 'true'}
                                                 />
 

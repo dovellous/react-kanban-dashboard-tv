@@ -1,6 +1,8 @@
 import React from 'react';
 import './Card.css';
 import 'font-awesome/css/font-awesome.min.css';
+import moment from 'moment';
+moment().format();
 
 class Card extends React.Component {
 
@@ -71,9 +73,9 @@ class Card extends React.Component {
 
                             </div>
 
-                            <div>
+                            <div data-date={this.props.object.date_updated}>
                                 <i className="fa fa-calendar fa-icon"></i>
-                                4 Months Ago
+                                {moment(this.props.object.date_updated).fromNow()}
                             </div>
                         </div>
 
