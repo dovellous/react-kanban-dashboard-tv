@@ -24,7 +24,33 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script type="text/javascript">
+
+                var pusher = new Pusher('05c0d4b2c18f99062ee6', {
+                    cluster: 'ap2'
+                });
+
+                
+
+                window.addEventListener("TOKEN_REGISTERED", function(e){
+
+                    var channel = pusher.subscribe('sz-monitor');
+                    channel.bind(e.detail.token_id, function(data) {
+
+                        console.log("<*******************[ NOTIFICATION DATA ]*********************>", data);
+
+                        const event = new CustomEvent('RECEIVED_ACTION', { detail: {data: data} });
+
+                        window.dispatchEvent(event);
+
+                    });
+
+                });
+
+                
+    </script>
+    <title>SUPPLY ZONE COMMUNICATOR :: TV MONITOR</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

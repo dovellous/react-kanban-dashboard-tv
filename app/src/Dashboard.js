@@ -1,8 +1,9 @@
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
-import Swiper from 'swiper/swiper-bundle.esm.js';
-import 'swiper/swiper-bundle.css';
+
+
 import JobItemSwiper from './JobItemSwiper.js';
+import JobDetails from './JobDetails.js';
 import {reactLocalStorage} from 'reactjs-localstorage';
 
 const axios = require('axios');
@@ -23,8 +24,13 @@ class Dashboard extends React.Component {
                 t2: "In Progress...",
                 t3: "Completed",
                 t4: "Delivered",
+            },
+            appState: {
+                ready: false
             }
         };
+
+        this.handlerRefreshReplicationStats = this.handlerRefreshReplicationStats.bind(this);
 
     }
 
@@ -36,11 +42,32 @@ class Dashboard extends React.Component {
 
         this.refreshReplicationStats();
 
+        this.timerID = setInterval(
+            () => this.tick(),
+            3000
+        );
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+
+        this.setState({
+            appState: this.props.appState
+        });
+
+        console.log("::: APPSTATE ::", this.state.appState)
+
     }
 
     renderSwiper(){
 
         let self = this;
+
+        /*
 
         window.swiper = new Swiper(".swiper", {
             loop: false,
@@ -51,10 +78,7 @@ class Dashboard extends React.Component {
             centeredSlides: false,
             direction: 'horizontal',
             speed: 5000,
-            autoplay: {
-                delay: 15000,
-                disableOnInteraction: true,
-            },
+            autoplay: { delay: 15000, disableOnInteraction: true},
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -79,6 +103,12 @@ class Dashboard extends React.Component {
 
         });
 
+        */
+
+    }
+
+    handlerRefreshReplicationStats(){
+        this.refreshReplicationStats();
     }
 
     refreshReplicationStats(){
@@ -92,7 +122,7 @@ class Dashboard extends React.Component {
             this.setState({items: []})
 
             // Make a request for a user with a given ID
-            axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/' + self.props.userData.tenant_id)
+            axios.get('https://communicator.hyperefficient2.net/index.php/display/retrieve_json/' + self.props.userData.tenant_id + '/' + self.props.workshopId)
                 .then(function (response) {
                     // handle success
                     self.populateData(response);
@@ -200,6 +230,8 @@ class Dashboard extends React.Component {
 
             <div className="container-fluid ">
 
+                
+
                 <div className="row kanban-header-container">
 
                     <div className="col-10 col-md-10 kanban-header">
@@ -218,22 +250,19 @@ class Dashboard extends React.Component {
 
                 <div className="row kanban-tiles-container">
 
-                    <JobItemSwiper titles={this.state.titles} items={this.state.items} />
+                    {this.state.appState.stateName === "KANBAN" &&
+ 
+                    <JobItemSwiper refreshReplicationStats={this.handlerRefreshReplicationStats} titles={this.state.titles} items={this.state.items} />
+ 
+                    }
 
-                </div>
+                    {this.state.appState.stateName === "JOB_DETAILS" &&
 
-                <div className="row  kanban-footer-container">
+                    <JobDetails appState={this.state.appState} />
 
-                    <div className="col-4">&nbsp;</div>
+                    }
 
-                    <div className="col-4  kanban-footer-text-container">
-
-                        <div className="swiper-pagination"></div>
-
-                    </div>
-
-                    <div className="col-4">&nbsp;</div>
-
+                    
                 </div>
 
             </div>

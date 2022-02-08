@@ -26,6 +26,8 @@ class LoginForm extends React.Component {
 
         let localRememberMe = reactLocalStorage.get("rememberMe", false, true);
 
+        console.log("LOCALSTOR REMEMBER ME", localRememberMe);
+
         if (localRememberMe === "false"){
 
             localRememberMe =  false;
@@ -43,6 +45,8 @@ class LoginForm extends React.Component {
             localLoggedIn =  false;
 
         }
+
+        console.log("LOCALSTOR REMEMBER ME | LOGGEN IN", localRememberMe, localLoggedIn);
 
         if (localLoggedIn){
 
@@ -183,11 +187,11 @@ class LoginForm extends React.Component {
 
                         //console.warn(":: self.state.rememberMe ::", self.state.rememberMe);
 
-                        reactLocalStorage.setObject("userObject", data.payload);
+                        reactLocalStorage.setObject("userObject", data);
 
                     }
 
-                    self.signInUser(data.payload);
+                    self.signInUser(data);
 
                 }
 
@@ -205,13 +209,18 @@ class LoginForm extends React.Component {
 
     }
 
-    signInUser( payload ){
+    signInUser( data ){
 
-        //console.log("SIGNED IN USER", payload);
+        const payload = data.payload;
+        const workshops = data.workshops;
+
+        console.log("SIGNED IN USER", [data]);
 
         if ("tenant_id" in payload){
 
             this.props.action(payload);
+
+            this.props.workshops(workshops);
 
         }
 
@@ -252,8 +261,8 @@ class LoginForm extends React.Component {
                 <form  onSubmit={this.handleSubmit} className="form-signin" style={{ height: "10vh", paddingTop: "100px"}}>
                     <img alt="" src="https://communicator.hyperefficient2.net/assets/favicon/apple-icon-114x114.png" />
                     <h4 className="h4 mt-3 mb-3 font-weight-normal">Please sign in</h4>
-                    <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                        <input type="text" data-id="username" value={this.state.username} onChange={this.handleChange} className="form-control mb-4" placeholder="Device Login" required  />
+                    <label htmlFor="inputEmail" className="sr-only">Username</label>
+                        <input type="text" data-id="username" value={this.state.username} onChange={this.handleChange} className="form-control mb-4" placeholder="Device monitor username" required  />
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
                         <input type="password" data-id="password" value={this.state.password} onChange={this.handleChange} className="form-control mb-4" placeholder="Password" required />
                     <div className="checkbox mb-3 text-align-left">
